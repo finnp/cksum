@@ -1,0 +1,27 @@
+{
+  "name": "cksum",
+  "version": "1.0.0",
+  "description": "calculate checksum for file (after cksum.c)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/finnp/cksum.git"
+  },
+  "keywords": [
+    "cksum",
+    "sum",
+    "checksum",
+    "crc",
+    "crc32",
+    "unix"
+  ],
+  "author": "Finn Pauls",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/finnp/cksum/issues"
+  },
+  "homepage": "https://github.com/finnp/cksum"
+}
