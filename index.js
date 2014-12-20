@@ -57,13 +57,13 @@ var crctab = [
 module.exports = function (buf) {
   var crc = new Buffer(4).writeUInt32BE(0, 0)
   for (var i = 0; i < buf.length; i++) {
-    crc = crc_table[buf[i] ^ ((crc >>> 24) & 0xFF)] ^ (crc << 8)
+    crc = crctab[buf[i] ^ ((crc >>> 24) & 0xFF)] ^ (crc << 8)
   }
   
   /* cksum.c also calculates the crc-32 on the length of the file */
   var num_bytes = buf.length
   while (num_bytes > 0) {
-    crc = crc_table[(num_bytes & 0xFF) ^ ((crc >> 24) & 0xFF)] ^ (crc << 8)
+    crc = crctab[(num_bytes & 0xFF) ^ ((crc >> 24) & 0xFF)] ^ (crc << 8)
     num_bytes >>= 8
   }
   
