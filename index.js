@@ -56,6 +56,8 @@ var crctab = [
 // reference implementation: http://pubs.opengroup.org/onlinepubs/9699919799/utilities/cksum.html
 
 module.exports = function (buf) {
+  if (typeof buf === 'string') buf = new Buffer(buf)
+
   var crc = 0
   for (var i = 0; i < buf.length; i++) {
     crc = crctab[buf[i] ^ ((crc >>> 24) & 0xFF)] ^ (crc << 8)

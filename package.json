@@ -4,7 +4,7 @@
   "description": "calculate checksum for file (after cksum.c)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
   "bin": "cli.js",
   "repository": {
@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/finnp/cksum",
   "dependencies": {
-    "concat-stream": "^1.5.1"
+    "concat-stream": "^1.5.1",
+    "tape": "^4.2.2"
   }
 }
