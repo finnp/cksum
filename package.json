@@ -1,6 +1,6 @@
 {
   "name": "cksum",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "calculate checksum for file (after cksum.c)",
   "main": "index.js",
   "scripts": {
