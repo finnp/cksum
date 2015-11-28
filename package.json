@@ -25,8 +25,8 @@
     "url": "https://github.com/finnp/cksum/issues"
   },
   "homepage": "https://github.com/finnp/cksum",
-  "dependencies": {
-    "concat-stream": "^1.5.1",
+  "dependencies": {},
+  "devDependencies": {
     "tape": "^4.2.2"
   }
 }

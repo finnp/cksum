@@ -1,3 +1,5 @@
+var stream = require('stream')
+
 var crctab = [
   0x00000000,
   0x04c11db7, 0x09823b6e, 0x0d4326d9, 0x130476dc, 0x17c56b6b,
@@ -71,6 +73,28 @@ module.exports = function (buf) {
   }
 
   return bufferizeInt(~crc)
+}
+
+module.exports.stream = function (cb) {
+  var writable = new stream.Writable()
+  var crc = 0
+  var length = 0
+  writable._write = function (buf, enc, cb) {
+    length += buf.length
+    for (var i = 0; i < buf.length; i++) {
+      crc = crctab[buf[i] ^ ((crc >>> 24) & 0xFF)] ^ (crc << 8)
+    }
+    cb()
+  }
+  writable.on('finish', function () {
+    var num_bytes = length
+    while (num_bytes > 0) {
+      crc = crctab[(num_bytes & 0xFF) ^ ((crc >>> 24) & 0xFF)] ^ (crc << 8)
+      num_bytes >>>= 8
+    }
+    cb(bufferizeInt(~crc), length)
+  })
+  return writable
 }
 
 function bufferizeInt (num) {

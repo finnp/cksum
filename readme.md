@@ -12,4 +12,9 @@ var cksum = require('cksum')
 
 cksum(new Buffer('testwhatever')) // returns buffer (big endian) with 32bit checksum
 cksum('test') // converts 'test' to buffer and then calcuates the checksum
+
+
+readStream.pipe(cksum.stream(function (sum, length) {
+  console.log(sum.readUInt32BE(0), len)
+}))
 ```
